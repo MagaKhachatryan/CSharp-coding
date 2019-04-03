@@ -58,30 +58,33 @@ namespace SortingAlgorithms
                 k++;
 
             }
-        } 
+        }
 
-        
+
         static public void mergeSort(int[] arr, int Left, int Right)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             if (Left < Right)
             {
-                
+
                 int m = Left + (Right - Left) / 2;
-                
+
                 mergeSort(arr, Left, m);
                 mergeSort(arr, m + 1, Right);
 
                 Merge(arr, Left, m, Right);
             }
-            for (int i = 0; i < arr.Length; ++i)
-            {
-                Console.WriteLine(arr[i]);
-            }
 
             stopwatch.Stop();
-            Console.WriteLine("Time Elapsed {0}", stopwatch.Elapsed);
+        }
+
+        static public void PrintArr(int[] Arr)
+        {
+            for (int i = 0; i < Arr.Length; ++i)
+            {
+                Console.WriteLine(Arr[i]);
+            }
         }
     }
     

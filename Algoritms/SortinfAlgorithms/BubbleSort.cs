@@ -9,12 +9,14 @@ namespace SortingAlgorithms
 {
     public class BubbleSort
     {
-        Stopwatch stopwatch = new Stopwatch();
+     
     
        static public void BBSort(int [] Arr)
         {
+           
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
+           
             for (int i = 0; i < Arr.Count()-1; ++i)
             {
                 for(int j=0;j<Arr.Count()-i-1;++j)
@@ -34,8 +36,14 @@ namespace SortingAlgorithms
             }
 
             stopwatch.Stop();
-            Console.WriteLine("Time Elapsed {0}", stopwatch.Elapsed);
-           
+        }
+
+        static public void PrintArr(int[] Arr)
+        {
+            for (int i = 0; i < Arr.Length; ++i)
+            {
+                Console.WriteLine(Arr[i]);
+            }
         }
     }
     

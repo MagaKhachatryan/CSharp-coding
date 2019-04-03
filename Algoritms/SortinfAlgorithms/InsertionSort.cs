@@ -14,7 +14,7 @@ namespace SortingAlgorithms
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-
+            
             for (int i = 1; i < Arr.Length; i++)
             {
                int item= Arr[i];
@@ -27,13 +27,17 @@ namespace SortingAlgorithms
                 }
                 Arr[j + 1] = item;
             }
+            
+
+            stopwatch.Stop();
+            //Console.WriteLine("Time Elapsed {0}", stopwatch.Elapsed);
+        }
+       static  public void PrintArr(int[] Arr)
+        {
             for (int i = 0; i < Arr.Length; ++i)
             {
                 Console.WriteLine(Arr[i]);
             }
-
-            stopwatch.Stop();
-            Console.WriteLine("Time Elapsed {0}", stopwatch.Elapsed);
         }
     }
 }

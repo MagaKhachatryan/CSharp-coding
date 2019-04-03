@@ -9,6 +9,7 @@ namespace SortingAlgorithms
 {
     public class QuickSort
     {
+      
         static public int ArraysSeperation(int[] Arr, int left, int right)
         {
             int pivot = Arr[left];
@@ -56,7 +57,16 @@ namespace SortingAlgorithms
             }
 
             stopwatch.Stop();
-            Console.WriteLine("Time Elapsed {0}", stopwatch.Elapsed);
+          
         }
+
+        static public void PrintArr(int[] Arr)
+        {
+            for (int i = 0; i < Arr.Length; ++i)
+            {
+                Console.WriteLine(Arr[i]);
+            }
+        }
+
     }
 }

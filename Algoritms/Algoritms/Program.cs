@@ -25,22 +25,33 @@ namespace Algorithms
           
             string a=Console.ReadLine();
             char[] b = new char[4];
-            if(a.Contains('-'))
+            if (a.Length == 1)
+                b[0] = a[0];
+            
+
+            if (a.Length > 1)
             {
-                int m = Convert.ToInt32(a[0]);
-                int k = Convert.ToInt32(a[3]);
-                for(int i=0; i<k; ++i)
+                if (a[1] == '-')
+                    
                 {
-                    b[i] =Convert.ToChar(m);
-                    ++m;
-                }    
-            }
-            if(a.Contains(','))
-            {
-                int j = 0;
-                for(int i=0;i<a.Length; i+=2)
+                    int m = Convert.ToInt32(a[0]);
+                    int k = Convert.ToInt32(a[2]);
+                   int j = 0;
+                       for(int i=m;i<=k;++i)
+                        {
+                        b[j] = Convert.ToChar(i);
+                        ++j;
+                        }
+                    
+                }
+                if (a.Contains(','))
                 {
-                    b[j] = a[i];
+                    int j = 0;
+                    for (int i = 0; i < a.Length; i += 2)
+                    {
+                        b[j] = a[i];
+                        ++j;
+                    }
                 }
             }
 
@@ -50,32 +61,50 @@ namespace Algorithms
                 {
                     case '1':
                         Console.WriteLine("Insertion Sort ");
-                        InsertionSort.insertionSort(A);
+                        int[] B = new int[A.Length];
+                        for(int k=0;k<B.Length;++k)
+                        {
+                            B[k] = A[k];
+                        }
+                        InsertionSort.insertionSort(B);
+                        InsertionSort.PrintArr(B);
                         break;
                     case '2':
                         Console.WriteLine("Merge Sort");
-                        MergeSort.mergeSort(A, 0, A.Length - 1);
+                        int[] C = new int[A.Length];
+                        for (int k = 0; k <C.Length; ++k)
+                        {C[k] = A[k];
+                        }
+                        MergeSort.mergeSort(C, 0, C.Length - 1);
+                        MergeSort.PrintArr(C);
                         break;
                     case '3':
                         Console.WriteLine("Bubble Sort");
-                        BubbleSort.BBSort(A);
+                        int[] D = new int[A.Length];
+                        for (int k = 0; k < D.Length; ++k)
+                        {
+                            D[k] = A[k];
+                        }
+                        BubbleSort.BBSort(D);
+                        BubbleSort.PrintArr(D);
                         break;
                     case '4':
                         Console.WriteLine("Quick Sort");
-                        QuickSort.quicksort(A, 0, A.Length - 1);
+                        int[] E= new int[A.Length];
+                        for (int k = 0; k < E.Length; ++k)
+                        {
+                            E[k] = A[k];
+                        }
+                        QuickSort.quicksort(E, 0, E.Length - 1);
+                        QuickSort.PrintArr(E);
                         break;
-                      
                 }
-
-            }
-           
-          
-
                 
+
             }
-            
-                  
-           
+            Console.ReadKey();
+            }
+      
         }
  }
 
