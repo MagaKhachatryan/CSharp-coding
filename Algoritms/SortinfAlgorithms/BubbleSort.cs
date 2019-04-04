@@ -30,11 +30,7 @@ namespace SortingAlgorithms
                 }
 
             }
-            for (int i = 0; i < Arr.Length; ++i)
-            {
-                Console.WriteLine(Arr[i]);
-            }
-
+            
             stopwatch.Stop();
         }
 

@@ -24,36 +24,9 @@ namespace Algorithms
 
           
             string a=Console.ReadLine();
-            char[] b = new char[4];
-            if (a.Length == 1)
-                b[0] = a[0];
-            
-
-            if (a.Length > 1)
-            {
-                if (a[1] == '-')
-                    
-                {
-                    int m = Convert.ToInt32(a[0]);
-                    int k = Convert.ToInt32(a[2]);
-                   int j = 0;
-                       for(int i=m;i<=k;++i)
-                        {
-                        b[j] = Convert.ToChar(i);
-                        ++j;
-                        }
-                    
-                }
-                if (a.Contains(','))
-                {
-                    int j = 0;
-                    for (int i = 0; i < a.Length; i += 2)
-                    {
-                        b[j] = a[i];
-                        ++j;
-                    }
-                }
-            }
+            int size =a.Length;
+            char[] b = new char[size];
+            Change(a, b);
 
             for(int i=0;i<b.Length;++i)
             {
@@ -104,6 +77,39 @@ namespace Algorithms
             }
             Console.ReadKey();
             }
+        static public void Change(string a,char [] b)
+        {
+            
+            if (a.Length == 1)
+                b[0] = a[0];
+
+
+            if (a.Length > 1)
+            {
+                if (a[1] == '-')
+
+                {
+                    int m = Convert.ToInt32(a[0]);
+                    int k = Convert.ToInt32(a[2]);
+                    int j = 0;
+                    for (int i = m; i <= k; ++i)
+                    {
+                        b[j] = Convert.ToChar(i);
+                        ++j;
+                    }
+
+                }
+                if (a.Contains(','))
+                {
+                    int j = 0;
+                    for (int i = 0; i < a.Length; i += 2)
+                    {
+                        b[j] = a[i];
+                        ++j;
+                    }
+                }
+            }
+        }
       
         }
  }
