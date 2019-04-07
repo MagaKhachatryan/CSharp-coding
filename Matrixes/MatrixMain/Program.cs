@@ -64,13 +64,45 @@ namespace MatrixMain
 
             matrix.Largest();
             matrix.Smallest();
-            matrix.Transpose();
-            matrix.Inverse();
+
+
+            Console.WriteLine("This is scalar multiplication");
             matrix.ScalarMultiplication(2);
+            for (int i = 0; i < rows; ++i)
+            {
+                for (int j = 0; j < columns; ++j)
+                {
+                    Console.Write(matrix.MatrixArray[i, j] + " ");
+
+                }
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("This is Transpose matrix");
+            matrix.Transpose();
+            for (int i = 0; i < rows; ++i)
+            {
+                for (int j = 0; j < columns; ++j)
+                {
+                    Console.Write(matrix.MatrixArray[i, j] + " ");
+
+                }
+                Console.WriteLine();
+            }
+            matrix.Inverse();
+            
             
             Console.WriteLine("please enter the number of columns in the second matrix to multioly the matrixes");
             int cols = Convert.ToInt32((Console.ReadLine()));
             Matrix matrix2 = new Matrix(columns, cols);
+
+            for (int i = 0; i < columns; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    matrix2.MatrixArray[i, j] = random.Next(0, 10);
+                }
+            }
             matrix.Multiplication(matrix2);
 
             

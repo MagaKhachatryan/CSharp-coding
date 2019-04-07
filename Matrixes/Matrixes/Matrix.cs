@@ -128,14 +128,14 @@ namespace Matrixes
                 }
             }
 
-            /*for (int i = 0; i < Rows; ++i)
+            for (int i = 0; i < Rows; ++i)
             {
                 for (int j = 0; j < M.Columns; ++j)
                 {
-                    Console.Write(Multiplied.MatrixArray[i, j] * " ");
+                    Console.Write(Multiplied.MatrixArray[i, j] + " ");
                 }
-                Console.Writeline();
-            }*/
+                Console.WriteLine();
+            }
             return Multiplied;
         }
 
@@ -143,7 +143,7 @@ namespace Matrixes
 
         public Matrix ScalarMultiplication(double n)
         {
-            Console.WriteLine("This is ScalarMultiplication");
+            //Console.WriteLine("This is ScalarMultiplication");
             for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0; j < Columns; j++)
@@ -151,14 +151,14 @@ namespace Matrixes
                     MatrixArray[i, j] *= n;
                 }
             }
-            for (int i = 0; i < Rows; i++)
+            /*for (int i = 0; i < Rows; i++)
             {
                 for (int j = 0;j<Columns; ++j)
                 {
                     Console.Write(MatrixArray[i, j] + " ");
                 }
                 Console.WriteLine();
-            }
+            }*/
             
 
             return this;
@@ -168,7 +168,7 @@ namespace Matrixes
 
         public Matrix Transpose()
         {
-            Console.WriteLine("This operation creates the transpose of the matrix");
+          //  Console.WriteLine("This operation creates the transpose of the matrix");
             Matrix TransposeMatrix = new Matrix(Columns,Rows);
             for(int i=0;i< Rows; ++i)
             {
@@ -178,14 +178,14 @@ namespace Matrixes
                 }
             }
 
-            for (int i = 0; i < TransposeMatrix.Rows; ++i)
+           /* for (int i = 0; i < TransposeMatrix.Rows; ++i)
             {
                 for (int j = 0; j < TransposeMatrix.Columns; j++)
                 {
                     Console.Write(TransposeMatrix.MatrixArray[i, j] + " ");
                 }
                 Console.WriteLine();
-            }
+            }*/
             return TransposeMatrix;
         }
 
@@ -193,7 +193,7 @@ namespace Matrixes
         
         public static double DET(int n, double[,] Mat)
         {
-            int d = 0;
+           double d = 0;
             int k, i, j, subi, subj;
             double[,] SUBMat = new double[n, n];
             if (n == 2)
@@ -221,12 +221,12 @@ namespace Matrixes
                     }
                     //stex aranc explicit casti chtoxec chaskaca xi? sax inta mejy
                     d = d + (int)(Math.Pow(-1, k) * Mat[0, k] * DET(n - 1, SUBMat));
+                    
                 }
             }
-            return d;
+            return Math.Abs(d);
         }
-
-
+          
 
         public Matrix Inverse()
         {
