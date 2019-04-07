@@ -240,14 +240,14 @@ namespace Matrixes
             if (DET(Columns,MatrixArray) != 0)
             {
                 double N = 1 / DET(this.Columns, this.MatrixArray);
-                Console.WriteLine();
-                Transpose();
-                this.ScalarMultiplication(N);
+                Console.WriteLine("1/Det==" + N);
+                Matrix inverse=Transpose();
+                inverse.ScalarMultiplication(N);
                 for (int i = 0; i < Rows; ++i)
                 {
                     for (int j = 0; j < Columns; ++j)
                     {
-                        Console.Write(MatrixArray[i, j] + " ");
+                        Console.Write(inverse.MatrixArray[i, j] + " ");
                     }
                     Console.WriteLine();
                 }
@@ -261,11 +261,26 @@ namespace Matrixes
         }
 
 
-       /* public bool Ortogonality()
+       public bool Ortogonality()
         {
-            Console.WriteLine("The operation determines whether it is Ortogonal or not");
             
-        }*/
+            Console.WriteLine("The operation determines whether it is Ortogonal or not");
+            Matrix transpose = this.Transpose();
+            Matrix inverse = this.Inverse();
+            if (transpose.Rows != inverse.Rows || inverse.Rows != inverse.Columns)
+                return false;
+            for(int i=0;i<inverse.Rows;++i)
+            {
+                for(int j=0;j<inverse.Columns;++j)
+                {
+                    if (inverse.MatrixArray[i, j] != transpose.MatrixArray[i, j])
+                        return false;
+                }
+            }
+
+            return true;
+            
+        }
        
     }
     }

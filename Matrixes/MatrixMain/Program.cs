@@ -11,7 +11,6 @@ namespace MatrixMain
     {
         static void Main(string[] args)
         {
-
             Console.WriteLine("Please enter the number of rows");
             int rows = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Please enter the number of columns");
@@ -68,6 +67,7 @@ namespace MatrixMain
 
             Console.WriteLine("This is scalar multiplication");
             matrix.ScalarMultiplication(2);
+
             for (int i = 0; i < rows; ++i)
             {
                 for (int j = 0; j < columns; ++j)
@@ -79,12 +79,12 @@ namespace MatrixMain
             }
 
             Console.WriteLine("This is Transpose matrix");
-            matrix.Transpose();
+            Matrix A=matrix.Transpose();
             for (int i = 0; i < rows; ++i)
             {
                 for (int j = 0; j < columns; ++j)
                 {
-                    Console.Write(matrix.MatrixArray[i, j] + " ");
+                    Console.Write(A.MatrixArray[i, j] + " ");
 
                 }
                 Console.WriteLine();
@@ -103,9 +103,19 @@ namespace MatrixMain
                     matrix2.MatrixArray[i, j] = random.Next(0, 10);
                 }
             }
+
+            for (int i = 0; i < rows; ++i)
+            {
+                for (int j = 0; j < columns; ++j)
+                {
+                    Console.Write(matrix2.MatrixArray[i, j] + " ");
+
+                }
+                Console.WriteLine();
+            }
             matrix.Multiplication(matrix2);
 
-            
+            Console.WriteLine(matrix.Ortogonality());
 
             /*
             for (int i = 0; i < rows; ++i)
