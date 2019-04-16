@@ -93,6 +93,7 @@ namespace DieRolling
             {
                 sum += list[i];
             }
+            //if the sum is great than 20 rise the event
             if (sum > 20)
             {
                 SumIsGreatThanTwenty();
