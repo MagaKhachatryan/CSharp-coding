@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Airport.cs" />
     <Compile Include="AirportsFileReader.cs" />
+    <Compile Include="OnlineAttendance.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -55,6 +56,12 @@
     <Content Include="Test data for Exercise 3.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StudentInfo\StudentInfo.csproj">
+      <Project>{9e3f8c17-b26e-4e1f-bf4e-912edf9b995a}</Project>
+      <Name>StudentInfo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
