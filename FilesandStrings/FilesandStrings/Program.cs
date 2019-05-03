@@ -10,14 +10,15 @@ namespace FilesandStrings
 {
     class Program
     {
+      
         private static string fileName = "Test data for Exercise 3.txt";
         static void Main(string[] args)
         {
-            Console.WriteLine("EXCERCISE 1");
+          /*  Console.WriteLine("EXCERCISE 1");
             var obj = new OnlineAttendance();
             obj.InvalidNames += OnInvalidNames;
             obj.InputProcess();
-            Console.WriteLine();
+            Console.WriteLine();*/
 
             Console.WriteLine("EXCERCISE 2");
             Console.WriteLine(excercise2("  Amerikayi Miacyal Nahangner"));
@@ -47,7 +48,7 @@ namespace FilesandStrings
         /// <param name="AirportList"></param>
         static public  void SortAirports(List<Airport> AirportList)
         {
-            for (int i = 0; i < AirportList.Count; ++i)
+            /*for (int i = 0; i < AirportList.Count; ++i)
             {
                 switch (AirportList[i].Size)
                 {
@@ -82,7 +83,7 @@ namespace FilesandStrings
                         }
                     default: break;
                 }
-            }
+            }*/
             for (int i = 0; i < AirportList.Count - 1; ++i)
             {
                 for (int j = 0; j < AirportList.Count - i - 1; ++j)
@@ -157,20 +158,16 @@ namespace FilesandStrings
             students.AddStudent(betty);
             students.AddStudent(carl);
             students.AddStudent(diana);
-            foreach (var item in students.StudentsList.Keys)
+            
+            foreach (var id in students.StudentsList.Keys)
             {
-                Console.WriteLine(students.StudentsList[item].Name);
+                foreach (var item in students.StudentsList[id].TestScores.Keys)
+                {
+                    Console.WriteLine(students.StudentsList[id].Name + "  " + item + "   " + students.StudentsList[id].TestScores[item]);
+                }
+
             }
         }
-                //?????????????????
-                /*  foreach (var id in students.StudentsList.Keys)
-                  {
-                      foreach (var item in students.StudentsList[id].TestScores.Keys)
-                      {                                                                  ??stex chimaca vonc tpem mi hatik key                      
-                          Console.WriteLine(students.StudentsList[id] + "  "+ ??????????????????????????? + students.StudentsList[id].TestScores[item] );
-                      }
-
-                  }*/
 
        static public string excercise2(string phrase)
         {

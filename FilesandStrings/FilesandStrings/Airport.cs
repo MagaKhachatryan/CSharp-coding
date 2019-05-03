@@ -14,7 +14,17 @@ namespace FilesandStrings
         public string Name { get; set; }
         public string CountryCode { get; set; }
         public string Size { get; set; }
-        public int SizeinInt { get; set; }
+        public AirportSizes SizeinInt { get; set; }
 
+        
+    }
+        
+    public enum AirportSizes
+    {
+        Small=0,
+        Medium=1,
+        Large=2,
+        Mega=3,
+        SuperMega=4,
     }
 }
