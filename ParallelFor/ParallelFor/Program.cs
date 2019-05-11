@@ -12,9 +12,12 @@ namespace ParallelFor
         {
            
             int[] Arr = { 1, 1, 1, 1, 1, 1, 1, 1, 1,9 };
-            Random rnd = new Random();
+            
             ParallelOptions opt = new ParallelOptions();
-            opt.MaxDegreeOfParallelism = rnd.Next(2, Arr.Length);
+            
+            string numberOfThreads=Console.ReadLine();
+           
+            opt.MaxDegreeOfParallelism = Int32.Parse(numberOfThreads);
             int Sum = 0;
             
             Parallel.For(0, Arr.Length, opt, index =>
