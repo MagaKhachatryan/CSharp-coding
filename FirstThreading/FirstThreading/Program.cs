@@ -6,7 +6,7 @@ namespace FirstThreading
 {
     class Program
     {
-        static Random rnd = new Random();
+        
         static void Main(string[] args)
         {
             int sum1 = 0, sum2 = 0;
