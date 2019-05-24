@@ -20,10 +20,16 @@ namespace CopyFileAsync
 
 
         }
+        /// <summary>
+        /// Function that copies one file into another 
+        /// and asyncronously prints the percent of copied context
+        /// <param name="sourecePath"></the file path that must be copied>
+        /// <param name="copyPath"></the file path where must be copied the sourcefile>
         static public   void CopyPercent(string sourecePath, string copyPath)
         {
             FileStream stream = File.OpenRead(sourecePath);
             FileStream writeStream = File.OpenWrite(copyPath);
+
             // create an array to hold the bytes
                 byte[] ByteArray = new byte[1024 * 1024];
 
@@ -37,9 +43,9 @@ namespace CopyFileAsync
             while ((bytesRead =
                         stream.Read(ByteArray, 0, 1)) > 0)
                 {
-                  Console.WriteLine("Readed bytes are {0}" ,ReadedBytes);
+                  //Console.WriteLine("Readed bytes are {0}" ,ReadedBytes);
                      ++ReadedBytes;
-                     Percent(ReadedBytes, stream.Length);
+                      Percent(ReadedBytes, stream.Length);
                     writeStream.Write(ByteArray, 0, bytesRead);
                 }
             
