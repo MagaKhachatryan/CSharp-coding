@@ -17,7 +17,7 @@ namespace CopyFileAsync
             string copypath = Path.Combine(path, copyFile);
 
             CopyPercent(sourcepath, copypath);
-
+            
 
         }
         /// <summary>
@@ -27,36 +27,43 @@ namespace CopyFileAsync
         /// <param name="copyPath"></the file path where must be copied the sourcefile>
         static public   void CopyPercent(string sourecePath, string copyPath)
         {
-            FileStream stream = File.OpenRead(sourecePath);
-            FileStream writeStream = File.OpenWrite(copyPath);
-
-            // create an array to hold the bytes
-                byte[] ByteArray = new byte[1024 * 1024];
-
-                double ReadedBytes = 0.0;
-                long size = stream.Length;
-                int bytesRead;
-
-            // while the read method returns bytes
-            // keep writing them to the output stream
-            Console.WriteLine("FileLength is {0}", stream.Length);
-            while ((bytesRead =
-                        stream.Read(ByteArray, 0, 1)) > 0)
+            using (FileStream stream = File.OpenRead(sourecePath))
+            using (FileStream writeStream = File.OpenWrite(copyPath))
+            {
                 {
-                  //Console.WriteLine("Readed bytes are {0}" ,ReadedBytes);
-                     ++ReadedBytes;
-                      Percent(ReadedBytes, stream.Length);
-                    writeStream.Write(ByteArray, 0, bytesRead);
+                    // create an array to hold the bytes
+                    byte[] ByteArray = new byte[21024];
+
+                    double ReadedBytes = 0.0;
+                    long size = stream.Length;
+                    int bytesRead;
+
+                    // while the read method returns bytes
+                    // keep writing them to the output stream
+                    Console.WriteLine("FileLength is {0}", stream.Length);
+                    while ((bytesRead =
+                                stream.Read(ByteArray, 0, 1)) > 0)
+                    {
+                        //Console.WriteLine("Readed bytes are {0}" ,ReadedBytes);
+                        ++ReadedBytes;
+                       Percent(ReadedBytes, stream.Length);
+                        
+                        writeStream.Write(ByteArray, 0, bytesRead);
+                        
+                    }
+
                 }
-            
-        }
+            }
+
+            }
         static public async Task  Percent(double num1, double num2)
         {
                   await Task.Run(() =>
                  {
                      Task.Delay(0);
-                    double result = ((num1 * 100) / num2);
+                     double result = ((num1 /num2 ) *100);
                      Console.WriteLine(result.ToString());
+                     
                  });
         }
     }
