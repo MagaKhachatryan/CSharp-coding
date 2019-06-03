@@ -34,13 +34,13 @@ namespace Queries
                 new Movie { Title = "Star Wars V",       Rating = 8.7f, Year = 1980 }
             };
 
-            //var query = movies.Where(m => m.Year > 1000).OrderBy(r => r.Rating).
-            //    Select(m => m);
+            var query = movies.Where(m => m.Year > 1000).OrderBy(r => r.Rating).
+                Select(m => m);
 
-            //var query2 = from m in movies
-            //             where m.Year > 2000
-            //             orderby m.Rating
-            //             select m.Title;                   
+            var query2 = from m in movies
+                         where m.Year > 2000
+                         orderby m.Rating
+                         select m.Title;
 
 
             //foreach (var item in query)
