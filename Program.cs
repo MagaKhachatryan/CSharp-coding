@@ -4,15 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathClient
+namespace MathServer
 {
     class Program
     {
         static void Main(string[] args)
         {
-            TCP client = new TCP();
-            client.SendResult();
-            Console.ReadLine();
+            TCP server = new TCP();
+            server.SendResult();
         }
     }
 }

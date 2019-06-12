@@ -1,49 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MathClient
+namespace MathServer
 {
-    public class TCP:INetWorkService
+   public class TCP : INetworkService
     {
-        Int32 port = 8001;
-        string localAddr = "127.0.0.1";
+        int port = 8001;
+        IPAddress localAddr = IPAddress.Parse("127.0.0.1");
+       
         public void SendResult()
         {
-
-            try
+            IPEndPoint endpoint = new IPEndPoint(localAddr, port);
+            TcpListener listener = new TcpListener(endpoint);
+            //listener.Start();
+            Console.WriteLine(@"Started listening requests at: {0}:{1}  ", endpoint.Address, endpoint.Port);
+            while (true)
             {
-                TcpClient client = new TcpClient();
-                Console.WriteLine("Connecting....");
-                client.Connect(localAddr, port);
-                Console.WriteLine("Connected!!!");
-                Stream stream = client.GetStream();
+                listener.Start();
+                string messeage = null;
+               
+                TcpClient sender = listener.AcceptTcpClient();
+                byte[] buffer = new byte[sender.ReceiveBufferSize];
+                Console.WriteLine("Request is accepted");
+                sender.GetStream().Read(buffer, 0, buffer.Length);
+                messeage = cleanMessage(buffer);
+                MathService ms = new MathService();
+                double res = ms.PerformOperation(messeage);
+                byte[] bytes =ASCIIEncoding.ASCII.GetBytes("Your answer is " + res);
+                sender.GetStream().Write(bytes, 0, bytes.Length);
+                sender.Close();
+                listener.Stop();
 
-                string str = Console.ReadLine();
+            }
 
-                //ASCIIEncoding asen = new ASCIIEncoding();
-                byte[] bytes = ASCIIEncoding.ASCII.GetBytes(str);
-                Console.WriteLine("Transmitting...");
-                stream.Write(bytes, 0, bytes.Length);
-                byte[] readed = new byte[150];
-                int readedBytes = stream.Read(readed, 0, 150);
-                for (int i = 0; i < readedBytes; ++i)
+        }
+        private static string cleanMessage(byte[] bytes)
+        {
+            string message =ASCIIEncoding.ASCII.GetString(bytes);
+
+            string messageToPrint = null;
+            foreach (var nullChar in message)
+            {
+                if (nullChar != '\0')
                 {
-                    Console.Write(Convert.ToChar(readed[i]));
+                    messageToPrint += nullChar;
                 }
-
-                stream.Close();
-                client.Close();
             }
-            catch( Exception ex)
-            {
-                Console.WriteLine("Error has occured" + " "+ ex.Message);
-            }
-
+            return messageToPrint;
         }
     }
 }
